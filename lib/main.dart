@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(const MyApp());
@@ -168,51 +169,55 @@ class MyStatelessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const SizedBox(height: 15, width: 100,),
-          TextButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 15),
-              primary: Colors.white38,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const SizedBox(height: 15, width: 100,),
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: const TextStyle(fontSize: 15),
+                primary: Colors.white38,
+              ),
+              onPressed: () {},
+              child: const Text('     Change Password        >'),
             ),
-            onPressed: () {},
-            child: const Text('     Change Password        >'),
-          ),
-          const SizedBox(height: 30),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Stack(
-              children: <Widget>[
-                Positioned.fill(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: <Color>[
-                          Colors.deepPurple,
-                          Colors.purpleAccent,
-                          Colors.blue,
-                          Colors.lightBlue,
-                        ],
+            const SizedBox(height: 30),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Stack(
+                children: <Widget>[
+                  Positioned.fill(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: <Color>[
+                            Colors.deepPurple,
+                            Colors.purpleAccent,
+                            Colors.blue,
+                            Colors.lightBlue,
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.all(16.0),
-                    primary: Colors.black,
-                    textStyle: const TextStyle(fontSize: 20),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(16.0),
+                      primary: Colors.black,
+                      textStyle: const TextStyle(fontSize: 20),
+                    ),
+                    onPressed: () {
+                      Fluttertoast.showToast
+                        (msg: 'Information Saved',
+                          toastLength: Toast.LENGTH_LONG);
+                    },
+                    child: const Text('                   Save                   '),
                   ),
-                  onPressed: () {},
-                  child: const Text('                   Save                   '),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
     );
   }
 }
